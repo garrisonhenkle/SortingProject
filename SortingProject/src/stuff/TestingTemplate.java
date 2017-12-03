@@ -21,6 +21,12 @@ public class TestingTemplate {
 		int[][] rand3 = new int[10][30000];
 		int[][] rand4 = new int[10][40000];
 		int[][] rand5 = new int[10][50000];
+		
+		int[][] sort1 = new int[10][10000];
+		int[][] sort2 = new int[10][20000];
+		int[][] sort3 = new int[10][30000];
+		int[][] sort4 = new int[10][40000];
+		int[][] sort5 = new int[10][50000];
 
 		int[][] active;
 
@@ -165,11 +171,11 @@ public class TestingTemplate {
 		}
 
 		sum = 0;
-		for (long i : times[0]) {
+		for (long i : times[1]) {
 			sum += i;
 		}
 		System.out.println("The average time (20000) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
-		
+
 		// rand3
 		for (int i = 1; i <= 10; i++) {
 
@@ -205,11 +211,11 @@ public class TestingTemplate {
 		}
 
 		sum = 0;
-		for (long i : times[0]) {
+		for (long i : times[2]) {
 			sum += i;
 		}
 		System.out.println("The average time (30000) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
-		
+
 		// rand4
 		for (int i = 1; i <= 10; i++) {
 
@@ -245,11 +251,11 @@ public class TestingTemplate {
 		}
 
 		sum = 0;
-		for (long i : times[0]) {
+		for (long i : times[3]) {
 			sum += i;
 		}
 		System.out.println("The average time (40000) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
-		
+
 		// rand5
 		for (int i = 1; i <= 10; i++) {
 
@@ -285,7 +291,7 @@ public class TestingTemplate {
 		}
 
 		sum = 0;
-		for (long i : times[0]) {
+		for (long i : times[4]) {
 			sum += i;
 		}
 		System.out.println("The average time (50000) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
