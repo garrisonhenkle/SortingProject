@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class TestingTemplate {
+public class TestingTemplate2 {
 
 	public static void main(String[] args) {
 
@@ -72,11 +72,56 @@ public class TestingTemplate {
 				}
 
 			}
+
+			for (int k = 10000; k <= 50000; k += 10000) {
+
+				for (fileNum = 1; fileNum <= 10; fileNum++) {
+
+					pathString = "C:\\Code\\sortedRand" + Integer.toString(fileNum) + "_" + Integer.toString(k)
+							+ ".txt";
+
+					Path path = Paths.get(pathString);
+
+					switch (k) {
+					case 10000:
+						active = sort1;
+						break;
+					case 20000:
+						active = sort2;
+						break;
+					case 30000:
+						active = sort3;
+						break;
+					case 40000:
+						active = sort4;
+						break;
+					case 50000:
+						active = sort5;
+						break;
+					default:
+						active = sort1;
+					}
+
+					try {
+						scan = new Scanner(path);
+						currPos = 0;
+
+						while (scan.hasNextInt()) {
+							active[fileNum - 1][currPos] = scan.nextInt();
+							currPos++;
+						}
+
+					} catch (Exception ignored) {
+					}
+				}
+			}
 		}
 
 		/////////////////////////////////////////////////////////////
 		// Insert the sorting algorithm here
 		/////////////////////////////////////////////////////////////
+
+		System.out.println(sort1[5][9999]);
 
 		// columns are for the 10 rand files, the rows indicate which length are being
 		// used
@@ -92,6 +137,7 @@ public class TestingTemplate {
 
 		// contains the sorts
 		SortsClass sorts = new SortsClass();
+		//Sorts2 sorts2 = new Sorts2();
 
 		// holds the sorted data
 		Integer[] data;
@@ -107,29 +153,13 @@ public class TestingTemplate {
 
 			startTime = System.nanoTime();
 
-			sorts.selectionSort(data, 10000);
+			sorts.treeSort(data);
 
 			finalTime = System.nanoTime();
 			time = finalTime - startTime;
 
 			System.out.println(i + ": " + time);
 			times[0][i - 1] = time;
-
-			try {
-				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_10000.txt"));
-			} catch (Exception ignored) {
-			}
-			try {
-				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_10000.txt");
-
-				for (int j = 0; j < 9999; j++) {
-					out.println(data[j]);
-				}
-				out.print(data[9999]);
-
-				out.close();
-			} catch (Exception ignored) {
-			}
 
 		}
 
@@ -148,7 +178,7 @@ public class TestingTemplate {
 
 			startTime = System.nanoTime();
 
-			sorts.selectionSort(data, 20000);
+			sorts.treeSort(data);
 
 			finalTime = System.nanoTime();
 			time = finalTime - startTime;
@@ -156,22 +186,6 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[1][i - 1] = time;
 
-			try {
-				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_20000.txt"));
-			} catch (Exception ignored) {
-			}
-			try {
-				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_20000.txt");
-
-				for (int j = 0; j < 19999; j++) {
-					out.println(data[j]);
-				}
-				out.print(data[19999]);
-
-				out.close();
-
-			} catch (Exception ignored) {
-			}
 		}
 
 		sum = 0;
@@ -189,30 +203,13 @@ public class TestingTemplate {
 
 			startTime = System.nanoTime();
 
-			sorts.selectionSort(data, 30000);
+			sorts.treeSort(data);
 
 			finalTime = System.nanoTime();
 			time = finalTime - startTime;
 
 			System.out.println(i + ": " + time);
 			times[2][i - 1] = time;
-
-			try {
-				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_30000.txt"));
-			} catch (Exception ignored) {
-			}
-			try {
-				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_30000.txt");
-
-				for (int j = 0; j < 29999; j++) {
-					out.println(data[j]);
-				}
-				out.print(data[29999]);
-
-				out.close();
-
-			} catch (Exception ignored) {
-			}
 		}
 
 		sum = 0;
@@ -230,7 +227,7 @@ public class TestingTemplate {
 
 			startTime = System.nanoTime();
 
-			sorts.selectionSort(data, 40000);
+			sorts.treeSort(data);
 
 			finalTime = System.nanoTime();
 			time = finalTime - startTime;
@@ -238,22 +235,6 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[3][i - 1] = time;
 
-			try {
-				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_40000.txt"));
-			} catch (Exception ignored) {
-			}
-			try {
-				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_40000.txt");
-
-				for (int j = 0; j < 39999; j++) {
-					out.println(data[j]);
-				}
-				out.print(data[39999]);
-
-				out.close();
-
-			} catch (Exception ignored) {
-			}
 		}
 
 		sum = 0;
@@ -271,7 +252,7 @@ public class TestingTemplate {
 
 			startTime = System.nanoTime();
 
-			sorts.selectionSort(data, 50000);
+			sorts.treeSort(data);
 
 			finalTime = System.nanoTime();
 			time = finalTime - startTime;
@@ -279,22 +260,6 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[4][i - 1] = time;
 
-			try {
-				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_50000.txt"));
-			} catch (Exception ignored) {
-			}
-			try {
-				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_50000.txt");
-
-				for (int j = 0; j < 49999; j++) {
-					out.println(data[j]);
-				}
-				out.print(data[49999]);
-
-				out.close();
-
-			} catch (Exception ignored) {
-			}
 		}
 
 		sum = 0;
@@ -302,6 +267,131 @@ public class TestingTemplate {
 			sum += i;
 		}
 		System.out.println("The average time (50000) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
+
+		// sort1
+		for (int i = 1; i <= 10; i++) {
+
+			currArray = sort1[i - 1];
+
+			data = Arrays.stream(currArray).boxed().toArray(Integer[]::new);
+
+			startTime = System.nanoTime();
+
+			sorts.treeSort(data);
+
+			finalTime = System.nanoTime();
+			time = finalTime - startTime;
+
+			System.out.println(i + ": " + time);
+			times[0][i - 1] = time;
+
+		}
+
+		sum = 0;
+		for (long i : times[0]) {
+			sum += i;
+		}
+		System.out.println("The average time (10000s) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
+
+		// sort2
+		for (int i = 1; i <= 10; i++) {
+
+			currArray = sort2[i - 1];
+
+			data = Arrays.stream(currArray).boxed().toArray(Integer[]::new);
+
+			startTime = System.nanoTime();
+
+			sorts.treeSort(data);
+
+			finalTime = System.nanoTime();
+			time = finalTime - startTime;
+
+			System.out.println(i + ": " + time);
+			times[1][i - 1] = time;
+
+		}
+
+		sum = 0;
+		for (long i : times[1]) {
+			sum += i;
+		}
+		System.out.println("The average time (20000s) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
+
+		// sort3
+		for (int i = 1; i <= 10; i++) {
+
+			currArray = sort3[i - 1];
+
+			data = Arrays.stream(currArray).boxed().toArray(Integer[]::new);
+
+			startTime = System.nanoTime();
+
+			sorts.treeSort(data);
+
+			finalTime = System.nanoTime();
+			time = finalTime - startTime;
+
+			System.out.println(i + ": " + time);
+			times[2][i - 1] = time;
+
+		}
+
+		sum = 0;
+		for (long i : times[2]) {
+			sum += i;
+		}
+		System.out.println("The average time (30000s) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
+
+		// sort4
+		for (int i = 1; i <= 10; i++) {
+
+			currArray = sort4[i - 1];
+
+			data = Arrays.stream(currArray).boxed().toArray(Integer[]::new);
+
+			startTime = System.nanoTime();
+
+			sorts.treeSort(data);
+
+			finalTime = System.nanoTime();
+			time = finalTime - startTime;
+
+			System.out.println(i + ": " + time);
+			times[3][i - 1] = time;
+
+		}
+
+		sum = 0;
+		for (long i : times[3]) {
+			sum += i;
+		}
+		System.out.println("The average time (40000s) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
+
+		// sort5
+		for (int i = 1; i <= 10; i++) {
+
+			currArray = sort5[i - 1];
+
+			data = Arrays.stream(currArray).boxed().toArray(Integer[]::new);
+
+			startTime = System.nanoTime();
+
+			sorts.treeSort(data);
+
+			finalTime = System.nanoTime();
+			time = finalTime - startTime;
+
+			System.out.println(i + ": " + time);
+			times[4][i - 1] = time;
+
+		}
+
+		sum = 0;
+		for (long i : times[4]) {
+			sum += i;
+		}
+		System.out.println("The average time (50000s) was " + Double.toString(((sum / 10) / 1000000000)) + " seconds.");
 		/////////////////////////////////////////////////////////////
 		// End of sorting algorithm
 		/////////////////////////////////////////////////////////////
