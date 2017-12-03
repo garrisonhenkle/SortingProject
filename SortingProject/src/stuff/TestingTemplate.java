@@ -21,7 +21,7 @@ public class TestingTemplate {
 		int[][] rand3 = new int[10][30000];
 		int[][] rand4 = new int[10][40000];
 		int[][] rand5 = new int[10][50000];
-		
+
 		int[][] sort1 = new int[10][10000];
 		int[][] sort2 = new int[10][20000];
 		int[][] sort3 = new int[10][30000];
@@ -96,6 +96,8 @@ public class TestingTemplate {
 		// holds the sorted data
 		Integer[] data;
 
+		PrintWriter out;
+
 		// rand1
 		for (int i = 1; i <= 10; i++) {
 
@@ -113,21 +115,22 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[0][i - 1] = time;
 
-			if (i == 10) {
-				try {
-					Files.createFile(Paths.get("C:\\Code\\sortedRand10_10000.txt"));
-				} catch (Exception ignored) {
-				}
-				try {
-					PrintWriter out = new PrintWriter("C:\\Code\\sortedRand10_10000.txt");
-
-					for (Integer intInData : data) {
-						out.println(intInData);
-					}
-
-				} catch (Exception ignored) {
-				}
+			try {
+				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_10000.txt"));
+			} catch (Exception ignored) {
 			}
+			try {
+				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_10000.txt");
+
+				for (int j = 0; j < 9999; j++) {
+					out.println(data[j]);
+				}
+				out.print(data[9999]);
+
+				out.close();
+			} catch (Exception ignored) {
+			}
+
 		}
 
 		double sum = 0;
@@ -153,20 +156,18 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[1][i - 1] = time;
 
-			if (i == 10) {
-				try {
-					Files.createFile(Paths.get("C:\\Code\\sortedRand10_20000.txt"));
-				} catch (Exception ignored) {
-				}
-				try {
-					PrintWriter out = new PrintWriter("C:\\Code\\sortedRand10_20000.txt");
+			try {
+				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_20000.txt"));
+			} catch (Exception ignored) {
+			}
+			try {
+				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_20000.txt");
 
-					for (Integer intInData : data) {
-						out.println(intInData);
-					}
-
-				} catch (Exception ignored) {
+				for (Integer intInData : data) {
+					out.println(intInData);
 				}
+
+			} catch (Exception ignored) {
 			}
 		}
 
@@ -193,20 +194,18 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[2][i - 1] = time;
 
-			if (i == 10) {
-				try {
-					Files.createFile(Paths.get("C:\\Code\\sortedRand10_30000.txt"));
-				} catch (Exception ignored) {
-				}
-				try {
-					PrintWriter out = new PrintWriter("C:\\Code\\sortedRand10_30000.txt");
+			try {
+				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_30000.txt"));
+			} catch (Exception ignored) {
+			}
+			try {
+				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_30000.txt");
 
-					for (Integer intInData : data) {
-						out.println(intInData);
-					}
-
-				} catch (Exception ignored) {
+				for (Integer intInData : data) {
+					out.println(intInData);
 				}
+
+			} catch (Exception ignored) {
 			}
 		}
 
@@ -233,20 +232,18 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[3][i - 1] = time;
 
-			if (i == 10) {
-				try {
-					Files.createFile(Paths.get("C:\\Code\\sortedRand10_40000.txt"));
-				} catch (Exception ignored) {
-				}
-				try {
-					PrintWriter out = new PrintWriter("C:\\Code\\sortedRand10_40000.txt");
+			try {
+				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_40000.txt"));
+			} catch (Exception ignored) {
+			}
+			try {
+				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_40000.txt");
 
-					for (Integer intInData : data) {
-						out.println(intInData);
-					}
-
-				} catch (Exception ignored) {
+				for (Integer intInData : data) {
+					out.println(intInData);
 				}
+
+			} catch (Exception ignored) {
 			}
 		}
 
@@ -273,20 +270,18 @@ public class TestingTemplate {
 			System.out.println(i + ": " + time);
 			times[4][i - 1] = time;
 
-			if (i == 10) {
-				try {
-					Files.createFile(Paths.get("C:\\Code\\sortedRand10_50000.txt"));
-				} catch (Exception ignored) {
-				}
-				try {
-					PrintWriter out = new PrintWriter("C:\\Code\\sortedRand10_50000.txt");
+			try {
+				Files.createFile(Paths.get("C:\\Code\\sortedRand" + i + "_50000.txt"));
+			} catch (Exception ignored) {
+			}
+			try {
+				out = new PrintWriter("C:\\Code\\sortedRand" + i + "_50000.txt");
 
-					for (Integer intInData : data) {
-						out.println(intInData);
-					}
-
-				} catch (Exception ignored) {
+				for (Integer intInData : data) {
+					out.println(intInData);
 				}
+
+			} catch (Exception ignored) {
 			}
 		}
 
